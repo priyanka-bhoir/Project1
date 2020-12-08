@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Registration"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_margin="15dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+<!--    <androidx.core.widget.NestedScrollView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content">-->
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WELCOME"
+        android:fontFamily="sans-serif"
+        android:textSize="40dp"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:layout_margin="9dp"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:hint="first name"
+            tools:ignore="MissingConstraints" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/laylname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="9dp"
+        tools:ignore="MissingConstraints">
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/lname"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:hint="last name"
+        tools:ignore="MissingConstraints" />
+</com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layphone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="9dp"
+        tools:ignore="MissingConstraints" >
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/phone"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:hint="phone number"
+        tools:ignore="MissingConstraints" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layemail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="9dp"
+        tools:ignore="MissingConstraints" >
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/email"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:hint="email"
+        tools:ignore="MissingConstraints" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layweb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="9dp"
+        tools:ignore="MissingConstraints" >
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/web"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:hint="website"
+        tools:ignore="MissingConstraints" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordlay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="9dp"
+        app:passwordToggleEnabled="true"
+        tools:ignore="MissingConstraints" >
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/password"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:passwordToggleEnabled="true"
+        android:hint="Password"
+        tools:ignore="MissingConstraints" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/conformplay"
+        app:passwordToggleEnabled="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="9dp"
+        tools:ignore="MissingConstraints" >
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/Conformpass"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:hint="Conform Password"
+        tools:ignore="MissingConstraints" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:id="@+id/Button"
+        android:layout_height="wrap_content"
+        android:onClick="submit"
+        android:layout_marginRight="10dp"
+        android:text="Add Data"
+        tools:ignore="OnClick" />
+<!--    </androidx.core.widget.NestedScrollView>-->
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
