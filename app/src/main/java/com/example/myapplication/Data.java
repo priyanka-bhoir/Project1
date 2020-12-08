@@ -15,13 +15,22 @@ public class Data {
 
 
 
-    public Data(String fname, String lname, String mobile, String web, String email,String Password) {
+    public Data(String fname, String lname, String mobile, String web, String email,String password) {
         Fname = fname;
         Lname = lname;
         Mobile = mobile;
         Web = web;
         Email = email;
-        Password=Password;
+        Password=password;
+    }
+    public Data(String fname, String lname, String mobile, String web, String email,String password,String id) {
+        Id=id;
+        Fname = fname;
+        Lname = lname;
+        Mobile = mobile;
+        Web = web;
+        Email = email;
+        Password=password;
     }
 
     public String getPassword() {

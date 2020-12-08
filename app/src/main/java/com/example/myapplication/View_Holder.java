@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class View_Holder extends RecyclerView.ViewHolder {
@@ -24,6 +25,7 @@ public class View_Holder extends RecyclerView.ViewHolder {
     ImageView Webic;
     ImageView Delete;
     WebView mywebview;
+    CardView cardView;
 
     public View_Holder(@NonNull View itemView) {
         super(itemView);
@@ -40,7 +42,7 @@ public class View_Holder extends RecyclerView.ViewHolder {
         Webic=itemView.findViewById(R.id.webic);
         Delete=itemView.findViewById(R.id.delete);
         mywebview = (WebView) itemView.findViewById(R.id.webView);
-
+        cardView = itemView.findViewById(R.id.cardView);
     }
 
 }

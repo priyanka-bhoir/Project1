@@ -3,6 +3,7 @@
     package="com.example.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -13,7 +14,9 @@
         android:theme="@style/Theme.MyApplication">
         <activity android:name=".webView"></activity>
         <activity android:name=".Login" />
-        <activity android:name=".recyclerviev"></activity>
+        <activity android:name=".recyclerviev">
+
+        </activity>
         <activity android:name=".Registration" />
         <activity android:name=".MainActivity">
             <intent-filter>

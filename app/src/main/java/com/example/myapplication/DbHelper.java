@@ -75,7 +75,9 @@ public class DbHelper extends SQLiteOpenHelper {
                 String email = cursor.getString(3);
                 String phone = cursor.getString(4);
                 String web = cursor.getString(5);
-                storeData.add(new Data(Fname, Lname,phone,web,email,password));
+                String pass=cursor.getString(6);
+                Log.e(TAG, "listData: "+"id"+id+""+ Fname+"f "+ Lname+"l"+phone+"p"+web+"w"+email+"e"+password);
+                storeData.add(new Data(Fname, Lname,phone,web,email,pass,id));
                 Log.e(TAG, "listData: " + id);
             }
 //        }
@@ -95,9 +97,10 @@ public class DbHelper extends SQLiteOpenHelper {
         db.update(Table_name,contentValues,ID +" =   ? ",null);
     }
 
-    void Delete(String id){
+    void Delete(String data){
+
         SQLiteDatabase db =this.getWritableDatabase();
-        db.delete(Table_name, id+" = ? ",new String[]{String.valueOf(id)});
+        db.delete(Table_name, ID+"=? ", new String[]{data});
     }
     boolean search(String Email, String Pass){
 //        String query="Select "+Email + "From " + Table_name+ "where "+ pass +"="+ Pass;

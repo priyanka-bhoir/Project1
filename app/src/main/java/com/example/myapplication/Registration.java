@@ -54,17 +54,12 @@ public class Registration extends AppCompatActivity {
 
          dbHelper = new DbHelper(this);
 
-         Fnamet=name.getText().toString();
-         Lnamet=lname.getText().toString();
-         Emailt=email.getText().toString();
-         Websitet=web.getText().toString();
-         Phone=mob.getText().toString();
-         passwordt=password.getText().toString();
+
+//         passwordt=password.getText().toString();
 
 
          intent = getIntent();
          if(intent!=null) {
-
             int flag;
              ID = intent.getStringExtra("ID");
              Fname = intent.getStringExtra("Fname");
@@ -88,41 +83,67 @@ public class Registration extends AppCompatActivity {
 
                 //validation part
 
-                if (Fnamet== null && Lnamet == null && Emailt == null && Websitet ==null && (Phonet ==null)) {
-                    Toast t=Toast.makeText(getApplicationContext(),"Enter the Whole Data",LENGTH_LONG);
-                    t.show();
+                Fnamet=name.getText().toString();
+                Lnamet=lname.getText().toString();
+                Emailt=email.getText().toString();
+                Websitet=web.getText().toString();
+                Phone=mob.getText().toString();
+//                passwordt=password.getText().toString();
+
+                if (Fnamet.isEmpty()){
+                    name.setError("Required");
                 }
-                if(passwordt.equals(confpass.getText().toString()))
-                {
-                    Toast t=Toast.makeText(getApplicationContext(),"Enter the same Password",LENGTH_LONG);
-                    t.show();
+                else if(Lnamet.isEmpty()){
+                    lname.setError("Required");
                 }
+                else if(Emailt.isEmpty()){
+                    email.setError("Required");
+                }
+                else if (Websitet.isEmpty()){
+                    web.setError("Required");
+                }
+                else if (Phone.isEmpty() || Phone.length() < 13){
+                    mob.setError("Invalid Number");
+                }
+                else if (!confpass.getText().toString().equals(password.getText().toString())){
+                    confpass.setError("Password did't match");
+                }
+                else{
+
+                    Log.e("Intent", "onClick: " + intent + "ID=> " + ID);
+                    data = new Data(name.getText().toString(), lname.getText().toString(), mob.getText().toString(), web.getText().toString(), email.getText().toString(), passwordt);
+                    if (ID == null) {
+                        dbHelper.insertD(data);
+                        Log.e("parthi", "data--->" + data);
+                        // Log.e("sub", "submit: data inserted");
+                        Toast t = Toast.makeText(getApplicationContext(), "data iserted", LENGTH_LONG);
+                        t.show();
+                        Intent intent = new Intent(Registration.this, recyclerviev.class);
+                        startActivity(intent);
+                    } else {
+                        dbHelper.Update(data);
+                        Log.e("parthi", "data--->" + data);
+                        // Log.e("sub", "submit: data inserted");
+                        Toast t = Toast.makeText(getApplicationContext(), "data iserted", LENGTH_LONG);
+                        t.show();
+
+                        Intent intent = new Intent(Registration.this, recyclerviev.class);
+                        startActivity(intent);
+                    }
+                }
+//                if (Fnamet.isEmpty() && Lnamet.isEmpty() && Emailt == null && Websitet ==null && (Phonet ==null)) {
+//                    Toast t=Toast.makeText(getApplicationContext(),"Enter the Whole Data",LENGTH_LONG);
+//                    t.show();
+//                }
+//                if((password.getText().toString()).equals(confpass.getText().toString()))
+//                {
+//                    Toast t=Toast.makeText(getApplicationContext(),"Enter the same Password",LENGTH_LONG);
+//                    t.show();
+//                }
 //                else {
 
 
-                Log.e("Intent", "onClick: "+intent+"ID=> "+ID);
-                data=new Data(name.getText().toString(),lname.getText().toString(),mob.getText().toString(),web.getText().toString(),email.getText().toString(),passwordt);
-                if(ID==null){
-                dbHelper.insertD(data);
-                    Log.e("parthi","data--->"+data);
-                    // Log.e("sub", "submit: data inserted");
-                    Toast t=Toast.makeText(getApplicationContext(),"data iserted", LENGTH_LONG);
-                    t.show();
-                    Intent intent=new Intent(Registration.this,recyclerviev.class);
-                    startActivity(intent);
                 }
-                else {
-                    dbHelper.Update(data);
-                    Log.e("parthi","data--->"+data);
-                    // Log.e("sub", "submit: data inserted");
-                    Toast t=Toast.makeText(getApplicationContext(),"data iserted", LENGTH_LONG);
-                    t.show();
-
-                    Intent intent=new Intent(Registration.this,recyclerviev.class);
-                    startActivity(intent);
-                }
-
-            }
         });
 
 //}
