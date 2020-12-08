@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -9,9 +10,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -25,7 +28,9 @@ public class Recyadapter extends RecyclerView.Adapter<View_Holder>{
     private Context context;
     private ArrayList<Data> mlistData;
     private DbHelper mDatabase;
+    Recyadapter madapter;
     Intent i;
+    recyclerviev recyclerviev;
     public Recyadapter(Context context,ArrayList<Data> listData) {
         this.context=context;
         this.listData=listData;
@@ -47,7 +52,11 @@ public class Recyadapter extends RecyclerView.Adapter<View_Holder>{
         final Data data = listData.get(position);
         holder.Fname.setText(data.Fname);
         holder.Lname.setText(data.Lname);
+
+
+
         holder.Edit.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("WrongConstant")
             @Override
             public void onClick(View v) {
                 i=new Intent(context,Registration.class);
@@ -57,6 +66,7 @@ public class Recyadapter extends RecyclerView.Adapter<View_Holder>{
                 i.putExtra("Email",data.getEmail());
                 i.putExtra("Phone",data.getMobile());
                 i.putExtra("Website",data.getWeb());
+                i.addFlags(1);
                 mDatabase.Update(data);
                 context.startActivity(i);
 
@@ -110,6 +120,24 @@ public class Recyadapter extends RecyclerView.Adapter<View_Holder>{
                 i.setData(Uri.parse(url));
                 context.startActivity(i);
 
+            }
+        });
+        holder.Webic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url="https://"+data.Web;
+                Log.e("web", "onClick: "+url);
+                Intent i =new Intent(context,webView.class);
+                i.putExtra("site",url);
+                context.startActivity(i);
+            }
+        });
+        holder.Delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("Id", "onClick: "+holder.getPosition());
+                mDatabase.Delete(String.valueOf(holder.getPosition()));
+                notifyDataSetChanged();
             }
         });
     }

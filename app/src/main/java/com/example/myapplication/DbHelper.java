@@ -10,7 +10,6 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class DbHelper extends SQLiteOpenHelper {
     public static final String Databse_name = "user.db";
@@ -21,7 +20,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String phone = "phone";
     public static final String email = "email";
     public static final String web = "web";
-    public static final String pass="password";
+    public static final String password="password";
     private static final String TAG = "Main";
 
     public DbHelper(@Nullable Context context) {
@@ -33,7 +32,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(
                 "create table details " +
-                        "(id integer primary key, fname text,lname text,email text, phone text,web text,pass text)"
+                        "(id integer primary key, fname text,lname text,email text, phone text,web text,password text)"
         );
     }
 
@@ -52,7 +51,7 @@ public class DbHelper extends SQLiteOpenHelper {
         contentValues.put(email, data.getEmail());
         contentValues.put(phone, data.getMobile());
         contentValues.put(web, data.getWeb());
-        contentValues.put(pass,data.getPassword());
+        contentValues.put(password,data.getPassword());
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(Table_name, null, contentValues);
     }
@@ -76,7 +75,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 String email = cursor.getString(3);
                 String phone = cursor.getString(4);
                 String web = cursor.getString(5);
-                storeData.add(new Data(Fname, Lname,phone,web,email,pass));
+                storeData.add(new Data(Fname, Lname,phone,web,email,password));
                 Log.e(TAG, "listData: " + id);
             }
 //        }
@@ -100,16 +99,25 @@ public class DbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db =this.getWritableDatabase();
         db.delete(Table_name, id+" = ? ",new String[]{String.valueOf(id)});
     }
-    void search(String Email,String Pass){
-        String query="Select "+Email + "From " + Table_name+ "where "+ pass +"="+ Pass;
+    boolean search(String Email, String Pass){
+//        String query="Select "+Email + "From " + Table_name+ "where "+ pass +"="+ Pass;
+        String[] columns={ID};
+
+        Log.e(TAG, "search:SQLiteDatabase " );
         SQLiteDatabase db=getReadableDatabase();
-        Cursor cursor= db.rawQuery(query,null);
-        String s=cursor.getString(0);
-        Log.e("String", "search: Login==> "+s);
-//        if (cursor.moveToFirst()){
-//            while (cursor.moveToNext()){
-//
-//            }
-//        }
+
+        Log.e(TAG, "search:SQLiteDatabase " );
+        String selection = email+"= ?";
+
+        String[] selectionArgs = {Email};
+
+        Cursor cursor= db.query(Table_name,columns,selection,selectionArgs,null,null,null);
+        int count=cursor.getCount();
+        cursor.close();
+        if(count>0){
+            return true;
+        }
+        return false;
+
     }
 }

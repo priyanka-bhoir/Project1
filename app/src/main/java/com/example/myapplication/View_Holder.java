@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.graphics.drawable.Icon;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +21,9 @@ public class View_Holder extends RecyclerView.ViewHolder {
     ImageView Sms;
     ImageView Wp;
     ImageView Emailic;
+    ImageView Webic;
+    ImageView Delete;
+    WebView mywebview;
 
     public View_Holder(@NonNull View itemView) {
         super(itemView);
@@ -33,6 +37,9 @@ public class View_Holder extends RecyclerView.ViewHolder {
         Sms = (ImageView) itemView.findViewById(R.id.smsic);
         Wp = (ImageView) itemView.findViewById(R.id.wp);
         Emailic = (ImageView) itemView.findViewById(R.id.emailic);
+        Webic=itemView.findViewById(R.id.webic);
+        Delete=itemView.findViewById(R.id.delete);
+        mywebview = (WebView) itemView.findViewById(R.id.webView);
 
     }
 

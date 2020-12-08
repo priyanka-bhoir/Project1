@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,8 @@ public class Registration extends AppCompatActivity {
     String ID=null;
     String Fname,Lname,Email,Phone,Website;
     String Fnamet,Lnamet,Emailt,Phonet,Websitet,passwordt;
+    View passwordlay;
+    View confpasslay;
 
 
     @SuppressLint("WrongViewCast")
@@ -45,6 +48,10 @@ public class Registration extends AppCompatActivity {
          confpass=findViewById(R.id.Conformpass);
 
          b=findViewById(R.id.Button);
+
+         passwordlay=findViewById(R.id.passwordlay);
+         confpasslay=findViewById(R.id.conformplay);
+
          dbHelper = new DbHelper(this);
 
          Fnamet=name.getText().toString();
@@ -57,13 +64,19 @@ public class Registration extends AppCompatActivity {
 
          intent = getIntent();
          if(intent!=null) {
+
+            int flag;
              ID = intent.getStringExtra("ID");
              Fname = intent.getStringExtra("Fname");
              Lname = intent.getStringExtra("Lname");
              Email = intent.getStringExtra("Email");
              Phone = intent.getStringExtra("Phone");
              Website = intent.getStringExtra("Website");
-
+             flag=intent.getFlags();
+             if (flag==1){
+                 passwordlay.setVisibility(View.GONE);
+                 confpasslay.setVisibility(View.GONE);
+             }
              name.setText(Fname);
              lname.setText(Lname);
              email.setText(Email);
@@ -104,6 +117,7 @@ public class Registration extends AppCompatActivity {
                     // Log.e("sub", "submit: data inserted");
                     Toast t=Toast.makeText(getApplicationContext(),"data iserted", LENGTH_LONG);
                     t.show();
+
                     Intent intent=new Intent(Registration.this,recyclerviev.class);
                     startActivity(intent);
                 }
