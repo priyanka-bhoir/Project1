@@ -22,7 +22,7 @@ import java.util.List;
 
 import static android.widget.Toast.LENGTH_LONG;
 
-public class Recyadapter extends RecyclerView.Adapter<View_Holder> {
+    public class Recyadapter extends RecyclerView.Adapter<View_Holder> {
     private List<View_Holder> items;
     public ArrayList<Data> listData;
     private Context context;

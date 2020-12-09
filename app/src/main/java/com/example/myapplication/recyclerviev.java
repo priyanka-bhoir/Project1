@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class recyclerviev extends AppCompatActivity {
     View_Holder holder;
-    RecyclerView mRecycler;
+     RecyclerView   mRecycler;
     private DbHelper db = new DbHelper(this);
     ArrayList<Data> data;
     Data d;
