@@ -12,16 +12,16 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 public class DbHelper extends SQLiteOpenHelper {
-    public static final String Databse_name = "user.db";
-    public static final String Table_name = "details";
-    public static final String ID = "id";
-    public static final String fname = "fname";
-    public static final String lname = "lname";
-    public static final String phone = "phone";
-    public static final String email = "email";
-    public static final String web = "web";
-    public static final String password="password";
-    private static final String TAG = "Main";
+        public static final String Databse_name = "user.db";
+        public static final String Table_name = "details";
+        public static final String ID = "id";
+        public static final String fname = "fname";
+        public static final String lname = "lname";
+        public static final String phone = "phone";
+        public static final String email = "email";
+        public static final String web = "web";
+        public static final String password="password";
+        private static final String TAG = "Main";
 
     public DbHelper(@Nullable Context context) {
         super(context, Databse_name, null, 12);
